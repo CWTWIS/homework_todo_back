@@ -6,6 +6,7 @@ const cors = require("cors");
 const notFound = require("./middleware/notFound");
 const error = require("./middleware/error");
 const authRouter = require("./routes/auth-route");
+const authenticate = require("./middleware/authenticate");
 
 const app = express();
 
@@ -14,6 +15,10 @@ app.use(express.json());
 
 // REST API SERVER
 app.use("/auth", authRouter);
+app.use("/user-only", authenticate, (req, res, next) => {
+  console.log(req.user);
+  res.json({ message: req.user.firstName });
+});
 
 app.use(notFound);
 app.use(error);
