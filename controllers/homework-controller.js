@@ -13,8 +13,10 @@ exports.createHomework = tryCatch(async (req, res, next) => {
     data: {
       subjectId: +subjectId,
       question,
-      startdate: new Date(startdate),
-      duedate: new Date(duedate),
+      startdate,
+      // startdate: new Date(startdate),
+      duedate,
+      // duedate: new Date(duedate),
       published,
       teacherId: req.user.id,
     },
