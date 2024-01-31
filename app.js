@@ -8,6 +8,7 @@ const error = require("./middleware/error");
 const authenticate = require("./middleware/authenticate");
 const authRouter = require("./routes/auth-route");
 const homeworkRouter = require("./routes/homework-route");
+const subjectRouter = require("./routes/subject-route");
 
 const app = express();
 
@@ -21,6 +22,7 @@ app.use("/user-only", authenticate, (req, res, next) => {
   res.json({ message: req.user.firstName });
 });
 app.use("/homework", authenticate, homeworkRouter);
+app.use("/subject", subjectRouter);
 
 app.use(notFound);
 app.use(error);
