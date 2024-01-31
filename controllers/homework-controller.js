@@ -2,7 +2,7 @@ const db = require("../models/db");
 const tryCatch = require("../utils/tryCatch");
 
 exports.createHomework = tryCatch(async (req, res, next) => {
-  const { question, startdate, duedate, published, subjectId, teacherId } =
+  const { question, startdate, duedate, published, subjectId } =
     //   validation
     req.body;
   console.log(req.body);
@@ -11,7 +11,7 @@ exports.createHomework = tryCatch(async (req, res, next) => {
   }
   const rs = await db.homework.create({
     data: {
-      subjectId,
+      subjectId: +subjectId,
       question,
       startdate: new Date(startdate),
       duedate: new Date(duedate),
