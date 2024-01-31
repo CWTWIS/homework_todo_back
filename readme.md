@@ -19,4 +19,6 @@ PORT =
 | path      | method | authen? | params | body                                                            |
 | --------- | ------ | ------- | ------ | --------------------------------------------------------------- |
 | /homework | POST   | t       | none   | {question, startdate, duedate, published, subjectId, teacherId} |
+| /homework | GET    | t       | none   | none                                                            |
+| /homework | PUT    | t       | /:id   | {question, startdate, duedate, published, subjectId, teacherId} |
 | /subject  | GET    | 0       | none   |                                                                 |
